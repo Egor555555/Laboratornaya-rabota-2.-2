@@ -1,0 +1,35 @@
+//Дан односвязный линейный список и указатель на голову списка P1. 
+//Необходимо вставить значение M после каждого четвертого элемента списка, и вывести ссылку на последний элемент полученного списка P2.
+#include "pt4.h"
+using namespace std;
+
+void Solve()
+{
+    Task("ListWork24");
+    int k = 1, m;
+    PNode ptr;
+    pt >> m >> ptr;
+    while (ptr->Next != nullptr)
+    {
+        ptr = ptr->Next;
+        k++;
+        if (k == 4)
+        {
+            PNode in = new TNode;
+            in->Data = m;
+            in->Next = ptr->Next;
+            if (ptr->Next == nullptr)
+            {
+                ptr->Next = in;
+                ptr = in;
+            }
+            else
+            {
+                ptr->Next = in;
+                ptr = in->Next;
+                k = 1;
+            }
+        }
+    }
+    pt << ptr;
+}
