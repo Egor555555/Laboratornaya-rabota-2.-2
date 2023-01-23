@@ -1,0 +1,48 @@
+//Дано кольцо (односвязный циклический список) и указатель на первый элемент этого списка. Создать текстовый файл, в который вывести содержимое этого списка с шагом k:
+//сначала первый элемент списка, потом (1+k)-й, далее (1+2k)-й и т.д. В общем случае: выводить i-й элемент, а за ним (i+k)-й элемент. 
+//Если список заканчивается, продолжать нумерацию с начала списка. После вывода очередного числа удалять его в списке. 
+//Вывод продолжать до тех пор, пока в списке есть числа.
+#include "pt4.h"
+#include <fstream>
+using namespace std;
+
+int removeNextElem(PNode& link) {
+    PNode tmp = link->Next;
+    int data = tmp->Data;
+    link->Next = link->Next->Next;
+    delete tmp;
+    return (data);
+}
+
+PNode& search(PNode& link, int distance) {
+    for (int i = 0; i < distance; i++)
+        link = link->Next;
+    return link;
+}
+
+void Solve()
+{
+    Task("ListWork69");
+    PNode link;
+    int k = 0;
+    string f;
+    pt >> link;
+    pt >> k;
+    pt >> f;
+    int count = 0;
+    ofstream file;
+    file.open(f);
+
+    PNode tmp = link;
+    while (tmp != link->Next)
+        link = link->Next;
+    file << (removeNextElem(search(link, 0)));
+
+    while (link->Next != link) {
+        file << " ";
+        file << (removeNextElem(search(link, k - 1)));
+        count++;
+    }
+    file << " ";
+    file << (link->Data);
+}
