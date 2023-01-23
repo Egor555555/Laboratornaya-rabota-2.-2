@@ -7,14 +7,14 @@ void Solve()
 {
     Task("ListWork7");
     PNode ptr;
-    int k=0;
+    int k=1;
     pt >> ptr;
-    while (k!=7)
+    while (k!=8)
     {
         ptr = ptr->Next;
         k++;   
     }
-    if (k == 7) {
+    if (k == 8) {
         pt << ptr;
     }
 }
