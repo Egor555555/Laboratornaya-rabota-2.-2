@@ -7,10 +7,10 @@
 using namespace std;
 
 int removeNextElem(PNode& link) {
-    PNode tmp = link->Next;
-    int data = tmp->Data;
+    PNode temp = link->Next;
+    int data = temp->Data;
     link->Next = link->Next->Next;
-    delete tmp;
+    delete temp;
     return (data);
 }
 
@@ -29,7 +29,7 @@ void Solve()
     pt >> link;
     pt >> k;
     pt >> f;
-    int count = 0;
+    int cnt = 0;
     ofstream file;
     file.open(f);
 
@@ -41,7 +41,7 @@ void Solve()
     while (link->Next != link) {
         file << " ";
         file << (removeNextElem(search(link, k - 1)));
-        count++;
+        cnt++;
     }
     file << " ";
     file << (link->Data);
