@@ -1,4 +1,4 @@
-include "pt4.h"
+#include "pt4.h"
 using namespace std;
 
 void Solve()
@@ -7,7 +7,7 @@ void Solve()
     PNode ptr;
     int k=0;
     pt >> ptr;
-    while (ptr != nullptr && k!=7)
+    while (k!=7)
     {
         ptr = ptr->Next;
         k++;   
