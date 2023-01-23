@@ -1,0 +1,18 @@
+include "pt4.h"
+using namespace std;
+
+void Solve()
+{
+    Task("ListWork7");
+    PNode ptr;
+    int k=0;
+    pt >> ptr;
+    while (ptr != nullptr && k!=7)
+    {
+        ptr = ptr->Next;
+        k++;   
+    }
+    if (k == 7) {
+        pt << ptr;
+    }
+}
