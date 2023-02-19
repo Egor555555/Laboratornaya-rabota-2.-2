@@ -1,0 +1,41 @@
+//Даны целые числа N, K и N целых чисел. Необходимо создать линейный список в который поместить все эти элементы. Список создавать по типу "стек". 
+//Удалить в списке все элементы, которые кратны K. Использовать процедурный подход.
+#include "pt4.h"
+using namespace std;
+
+void Add(int x, PNode& Head)
+{
+	PNode MyNode;
+	if (Head == NULL)
+	{
+		Head = new(TNode);
+		MyNode = Head;
+		Head->Next = NULL;
+	}
+	else
+	{
+		MyNode = new(TNode);
+		MyNode->Next = Head;
+		Head = MyNode;
+	}
+	MyNode->Data = x;
+}
+
+
+void Solve()
+{
+	Task("ListWork73");
+	PNode Head;
+	Head = NULL;
+	int n, k, x;
+
+	pt >> n >> k;
+	for (int i = 1; i <= n; i++)
+	{
+		pt >> x;
+		if (x % k != 0)
+			Add(x, Head);
+	}
+	pt << Head;
+
+}
